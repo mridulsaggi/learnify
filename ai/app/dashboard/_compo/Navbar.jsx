@@ -13,12 +13,12 @@ import { Button } from '../../../components/ui/button';
 const Navbar = () => {
     const navItems = [
         { label: "Home", href: "/" },
-        { label: "Dashboard", href: "/dashboard" },
+        { label: "Interview", href: "/dashboard" },
        { label: "RoadMaps", href: "/roadmap" },
        { label: "Study", href: "/study" },
        { label: "Resume", href: "/resume" },
         // { label: "Courses", href: "/courses" },
-        // { label: "Profile", href: "/userprofile" },
+        { label: "Profile", href: "/userprofile" },
     ];
     
     const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);

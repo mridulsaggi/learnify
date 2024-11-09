@@ -50,7 +50,22 @@ const AddNewInterview = () => {
         setloading(true);
         // console.log(formdata)
         // generate the prompt
-        const prompt=`Give me 5 questions with thier answers in json format for an interview for a job title ${formdata.jobTitle} with the job description or tech stack for the job as ${formdata.jobDescription} for a person having ${formdata.yearsOfExp} years of experience.Do not ask for code in any question`
+        const prompt = `Please create 5 interview questions, with answers, in JSON format for the role of ${formdata.jobTitle}. Tailor each question to align with the job description and tech stack, specifically targeting ${formdata.jobDescription}. The candidate has ${formdata.yearsOfExp} years of experience, so the questions should reflect this level by being appropriately challenging, covering both fundamental and advanced concepts.
+
+        Avoid questions that ask for direct coding solutions; instead, focus on conceptual knowledge, problem-solving approaches, technical strategies, and best practices relevant to the role. Questions should help assess the candidate's depth of understanding, adaptability, and their practical experience with the specified tech stack. 
+
+        Return the response in this JSON format:
+        {
+            "questions": [
+                {
+                    "question": "Question 1 text",
+                    "answer": "Detailed answer for Question 1"
+                },
+                ...
+            ]
+        }
+            Make sure that the response should not contain more than 9000 charecters with the response being in correct json format
+            `
 
         const res=await chatSession.sendMessage(prompt)
         const temp=res.response.text()

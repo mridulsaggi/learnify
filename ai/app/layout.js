@@ -19,7 +19,7 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "SkillSync.AI",
+  title: "Learnify",
   description: "Full stack AI powered decentralized platform",
 };
 

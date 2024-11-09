@@ -34,6 +34,7 @@ const Page = ({ params }) => {
 
             if (result.length > 0 && result[0]?.jobMockResponse) {
                 const jsonresponse = JSON.parse(result[0].jobMockResponse)
+                // console.log("the response is:",result[0])
                 setQuestions(jsonresponse.questions)
             } else {
                 console.error('No data found for this interview')
@@ -76,10 +77,32 @@ const Page = ({ params }) => {
     }
 
     const submithandler = async (e) => {
-        const feedbackPrompt = `question : ${questions[active]?.question} , Answer: ${textareaData} , Depends on the question and the users answer, Please give a rating for answer and feedback for improvement if needed for the answer for the question. Return the response in json format with rating field and feedback field. Provide the feedback in 7-8 lines maximum and rating out of 10. The feedback should be like how can the answer be improved, what all things it lacked, and what all topics should be studied for improving the skill demanded in the question.`
+        const feedbackPrompt = `Question: ${questions[active]?.question}
+        Answer: ${textareaData}
+        Candidate Experience: ${interviewData.JobExperience} years
+        Job Position Applied: ${interviewData.jobPosition}
+        Current Skills: ${interviewData.jobDescription}
+
+        Based on the question and the candidate’s answer, please provide a personalized rating and feedback for the answer. 
+
+        - Rate the answer out of 10 and include specific feedback for improvement if necessary.
+        - If the answer is off-topic or doesn’t address the question, assign a rating of 0.
+        
+        The feedback should be constructive and motivating, including:
+        1. Suggestions on how the candidate can improve their response.
+        2. Highlight any areas that were well-answered to encourage positive reinforcement.
+        3. Identify any specific skills or topics the candidate could focus on to better meet the requirements for ${interviewData.jobPosition}.
+        
+        Return the response in JSON format:
+        {
+            "rating": [numeric value],
+            "feedback": "Detailed feedback in 7-8 lines maximum, covering strengths, improvements, and any recommended study areas to align the candidate’s answer with the job requirements."
+        }
+        The response should not contain more than 9500 charecters with the response being in correct json format    
+        `
 
         const result = await chatSession.sendMessage(feedbackPrompt)
-        const mockjsonrep = (await result.response.text());
+        const mockjsonrep = (result.response.text());
         const jsonresp = JSON.parse(mockjsonrep)
 
         const resp = await db.insert(Userans).values({
