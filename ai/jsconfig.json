@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".", // Point to the root directory
+    "paths": {
+      "@/*": ["./*"],  // Alias '@' to the root directory
+      "@/components/*": ["./components/*"]  // Specifically alias '@/components' to the components folder
+    }
+  }
+}
