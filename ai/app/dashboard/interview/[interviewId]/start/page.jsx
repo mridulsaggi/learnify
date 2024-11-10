@@ -98,7 +98,7 @@ const Page = ({ params }) => {
             "rating": [numeric value],
             "feedback": "Detailed feedback in 7-8 lines maximum, covering strengths, improvements, and any recommended study areas to align the candidate’s answer with the job requirements."
         }
-        The response should not contain more than 9500 charecters with the response being in correct json format    
+        The response should not contain more than 8500 charecters with the response being in correct json format    
         `
 
         const result = await chatSession.sendMessage(feedbackPrompt)

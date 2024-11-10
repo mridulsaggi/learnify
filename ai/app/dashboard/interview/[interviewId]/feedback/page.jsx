@@ -43,7 +43,8 @@ const FeedbackPage = ({ params }) => {
         - Common themes or skills that were lacking across multiple answers.
         - Suggestions on which skills or topics should be prioritized for improvement.
         - Any general advice for enhancing interview performance.
-        Return the analysis in a paragraph format and reply with directly addressing the user such as you have this knowledge and lack this , etc
+        Return the analysis in a paragraph format and reply with directly addressing the user such as you have this knowledge and lack this , etc.
+        
       `;
 
     const res = await chatSession.sendMessage(generateInterviewAnalysisPrompt)
@@ -65,6 +66,7 @@ const FeedbackPage = ({ params }) => {
     - Milestones or checkpoints to track progress.
     
     Make this roadmap actionable and targeted to the candidate’s specific needs, providing clear steps to reach proficiency in each skill.
+    the response should not be more than 8500 charecters and make sure that the response returned is in correct json format.
   `;
 
   

@@ -64,7 +64,7 @@ const AddNewInterview = () => {
                 ...
             ]
         }
-            Make sure that the response should not contain more than 9000 charecters with the response being in correct json format
+            Make sure that the response should not contain more than 8500 charecters with the response being in correct json format
             `
 
         const res=await chatSession.sendMessage(prompt)
